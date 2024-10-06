@@ -16,6 +16,16 @@ This code provides a convenient solution to convert multiple WebP files to the J
 ## Now just fun
 ![Penguin taking a bath](https://github.com/serrasqueiro/WEBP2JPG/blob/my/penguin/penguin_taking_a_bath.jpg)
 
+## PIL Library
+Python **PIL** library allows image manipulation easily.
+- Consider the following sample ...
+```
+from PIL import Image
+img = Image.open("penguin_taking_a_bath.webp")
+assert img.format.lower() == "webp", img.format
+img.save("penguin.jpg", 'JPEG', quality=quality)
+```
+
 ## Features
 
 - Converts multiple WEBP files to JPG format.
