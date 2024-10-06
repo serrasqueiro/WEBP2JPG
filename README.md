@@ -10,10 +10,11 @@ This code provides a convenient solution to convert multiple WebP files to the J
 
 ## Usage
 
-1. Install the required dependencies: `pip install pillow pyheif`
-2. Clone or download this repository.
-3. Provide the directory path containing the WEBP files in the script.
-4. Run the script to convert WEBP files to JPG format.
+1. Run the script to convert WEBP files to JPG format
+   + `./main.py` accepts multiple arguments, one per input file.
+
+## Now just fun
+![Penguin taking a bath](https://github.com/serrasqueiro/WEBP2JPG/blob/my/penguin/penguin_taking_a_bath.jpg)
 
 ## Features
 
