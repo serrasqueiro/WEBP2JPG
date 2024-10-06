@@ -33,7 +33,7 @@ def runner(args):
         if ext.lower() in OUT_FMTS["jpeg"]:
             print("Ignoring:", fname)
             continue
-        outname = outer + "!" + ext
+        outname = outer + ".jpg"
         print(f"Calling: convert_webp_to_jpg({repr(fname)}, {repr(outname)})")
         code, msg = converter.convert_webp_to_jpg(fname, outname)
         if msg:
