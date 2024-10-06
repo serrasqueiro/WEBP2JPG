@@ -1,6 +1,8 @@
 # WEBP to JPG Converter
 
-This Python script allows you to convert WebP image files to JPG format using the Pillow library.
+1. [(here)](https://github.com/serrasqueiro/WEBP2JPG) _Python_ WEBP2JPG
+
+These Python scripts allows you to convert WebP image files to JPG format using the Pillow library.
 
 ## What This Code Does ?
 

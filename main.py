@@ -1,39 +1,45 @@
+#!/usr/bin/env python
+# main.py -- mainly copied from https://github.com/dragonGR/PyWEBP2JPG
+
+import sys
+import os.path
 from PIL import Image
-import os
+import converter
 
-def convert_webp_to_jpg(input_file, output_file, quality=85):
-    """Converts a WebP image to JPG with quality control and error handling.
+OUT_FMTS = {
+    "jpeg": (".jpg", ".jpeg"),
+}
 
-    Args:
-        input_file (str): Path to the input WebP image.
-        output_file (str): Path to the output JPG image.
-        quality (int, optional): Quality level for JPG compression (0-95). Defaults to 85.
+def main():
+    """ Run script directly """
+    runner(sys.argv[1:])
 
-    Raises:
-        FileNotFoundError: If the input file is not found.
-        IOError: If there's an error during conversion.
+def runner(args):
+    """ Example:
+    input_image = 'sample.webp'
+    output_image = 'sample.jpg'
+    convert_webp_to_jpg(input_image, output_image)
     """
+    param = args
+    if not param:
+        return None
+    for fname in param:
+        outer, ext = os.path.splitext(fname)
+        if not ext:
+            print("No extension?", fname)
+            continue
+        if not outer:
+            continue
+        if ext.lower() in OUT_FMTS["jpeg"]:
+            print("Ignoring:", fname)
+            continue
+        outname = outer + "!" + ext
+        print(f"Calling: convert_webp_to_jpg({repr(fname)}, {repr(outname)})")
+        code, msg = converter.convert_webp_to_jpg(fname, outname)
+        if msg:
+            print(msg)
+            return code
+    return 0
 
-    try:
-        # Check if input file exists
-        if not os.path.exists(input_file):
-            raise FileNotFoundError(f"Input file '{input_file}' does not exist.")
-
-        # Open the WebP image
-        with Image.open(input_file) as img:
-            # Convert to RGB mode if necessary
-            if img.mode == 'CMYK':
-                img = img.convert('RGB')
-
-            # Save as JPG with quality control
-            img.save(output_file, 'JPEG', quality=quality)
-
-        print(f"Conversion successful! Image saved to: {output_file}")
-
-    except (FileNotFoundError, IOError) as e:
-        print(f"Error converting image: {e}")
-
-# Example usage
-input_image = 'sample.webp'
-output_image = 'sample.jpg'
-convert_webp_to_jpg(input_image, output_image)
+if __name__ == "__main__":
+    main()
