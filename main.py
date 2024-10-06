@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-# main.py -- mainly copied from https://github.com/dragonGR/PyWEBP2JPG
+
+""" main.py -- mainly copied from https://github.com/dragonGR/PyWEBP2JPG
+"""
 
 import sys
 import os.path
-from PIL import Image
 import converter
 
 OUT_FMTS = {
